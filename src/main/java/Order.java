@@ -8,13 +8,9 @@ import java.util.stream.Collectors;
  */
 public class Order {
     public static String order(String words) {
-        String str = Arrays
+        return Arrays
             .stream(words.split(" "))
-            .sorted(Comparator.comparing(word -> Integer.valueOf()))
-            .sorted((word1, word2) ->
-                Integer.compare(Integer.valueOf(word1.replaceAll("[^0-9]", "")), Integer.valueOf(word2.replaceAll("[^0-9]", "")))
-            )
+            .sorted(Comparator.comparing(word -> Integer.valueOf(word.replaceAll("\\D", ""))))
             .collect(Collectors.joining(" "));
-        return str;
     }
 }
