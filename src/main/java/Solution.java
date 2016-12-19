@@ -9,13 +9,8 @@
 public class Solution {
     public static int zeros(int n) {
         int result = 0;
-        int j = 0;
-        for (int i = 1; i <= n; i++) {
-            j = i;
-            while (j % 5 == 0) {
-                result ++;
-                j = j / 5;
-            }
+        for (int i = 5; i <= n; i *= 5) {
+            result += n / i;
         }
         return result;
     }
