@@ -9,6 +9,10 @@ import java.util.stream.IntStream;
  * Simple Encryption #1 - Alternating Split
  * https://www.codewars.com/kata/simple-encryption-number-1-alternating-split/train/java
  * 6kyu
+ *
+ * Data Reverse
+ * https://www.codewars.com/kata/569d488d61b812a0f7000015/train/java
+ * 6kyu
  */
 public class Kata {
     public static String createPhoneNumber(int[] numbers) {
@@ -50,4 +54,16 @@ public class Kata {
         return result;
     }
 
+    public static int[] DataReverse(int[] data) {
+        int length = data.length;
+        int[] result = new int[length];
+        int idx;
+
+        for (int i=0; i<length; i++) {
+            idx = length / 8 - 1 - (i / 8);
+            result[idx * 8 + (i % 8)] = data[i];
+        }
+
+        return result;
+    }
 }
