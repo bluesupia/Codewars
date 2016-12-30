@@ -55,15 +55,9 @@ public class Kata {
     }
 
     public static int[] DataReverse(int[] data) {
-        int length = data.length;
-        int[] result = new int[length];
-        int idx;
-
-        for (int i=0; i<length; i++) {
-            idx = length / 8 - 1 - (i / 8);
-            result[idx * 8 + (i % 8)] = data[i];
-        }
-
-        return result;
+        return IntStream
+            .range(0, data.length)
+            .map(i -> data[data.length - 8 - (i / 8 * 8) + (i % 8)])
+            .toArray();
     }
 }
