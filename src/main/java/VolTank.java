@@ -7,25 +7,11 @@
  */
 public class VolTank {
     public static int tankVol(int h, int d, int vt) {
-        double vl = 0;
-        double _vh = (4 * vt) / ( d * d * Math.PI); // 실린더 높이
-        double _theta = 0; // 중심각
-        double _arcS =  0; // 부채꼴 넓이
-        double _triS =  0; // 삼각형 넓이
-
-        _theta = Math.atan( 2 * Math.sqrt( (h * d)  - (h * h)) / ( d - ( 2 * h) ) );
-        if (h <= d/2) {
-            _arcS =  d * d * _theta / 4;
-            _triS = d * d * Math.sin(2 * _theta) / 8;
-            vl = _vh * (_arcS - _triS);
-        } else {
-            _theta = - 1 * _theta;
-            _arcS =  d * d * ( Math.PI - _theta) / 4;
-            _triS = d * d * Math.sin(2 * _theta) / 8;
-            vl = _vh * (_arcS + _triS);
-        }
-
-        // your code
+        // 삼각함수의 배각공식 : sin2θ=2sinθcosθ
+        // 삼각함수의 대칭공식 : sin(PI - θ) = sinθ, cos(PI - θ) = -cosθ
+        double _cos  = 1.0 - ( 2.0 * h / d);
+        double _theta = Math.acos(_cos);
+        double vl = vt * ( _theta  -  Math.sin(_theta) * Math.cos(_theta) ) / Math.PI;
         return (int) vl;
     }
 }
