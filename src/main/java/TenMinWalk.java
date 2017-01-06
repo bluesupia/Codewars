@@ -7,33 +7,30 @@
 public class TenMinWalk {
     public static boolean isValid(char[] walk) {
         // Insert brilliant code here
-        int cnt_n = 0, cnt_s = 0, cnt_e = 0, cnt_w = 0;
+        int y_direction = 0, x_direction = 0;
 
         if (walk.length == 10) {
-
             for (int i = 0; i < walk.length; i++) {
                 switch (walk[i]) {
                     case 'n':
-                        cnt_n++;
+                        y_direction++;
                         break;
                     case 's':
-                        cnt_s++;
+                        y_direction--;
                         break;
                     case 'e':
-                        cnt_e++;
+                        x_direction++;
                         break;
                     case 'w':
-                        cnt_w++;
+                        x_direction--;
                         break;
                 }
             }
 
-            if (cnt_e == cnt_w && cnt_n == cnt_s) {
+            if (y_direction == 0 && x_direction == 0) {
                 return true;
-            } else {
-                return false;
             }
-        } else
-            return false;
+        }
+        return false;
     }
 }
