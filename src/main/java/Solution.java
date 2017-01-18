@@ -26,6 +26,15 @@ public class Solution {
         return root; // TODO: implementation
     }
 
+    static int maxSum(TreeNode root) {
+        int result = 0;
+
+        while(root != null) {
+
+        }
+        return result;
+    }
+
     private static TreeNode createTreeNode(int[] input, int index) {
         if (index <= input.length) {
             int value = input[index-1];

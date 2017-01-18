@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 /**
  * Created by supersupa on 2016. 12. 16..
  * https://www.codewars.com/kata/55c45be3b2079eccff00010f/train/java
+ * 6kyu
  */
 public class Order {
     public static String order(String words) {

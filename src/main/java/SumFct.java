@@ -10,15 +10,16 @@ public class SumFct {
     public static BigInteger perimeter(BigInteger n) {
         // your code
 
-        BigInteger result = BigInteger.valueOf(0);
-
-        BigInteger[] arr = new BigInteger[n.intValue() + 1];
+        BigInteger result = BigInteger.ZERO;
+        BigInteger a = BigInteger.ZERO;
+        BigInteger b = BigInteger.ONE;
+        BigInteger c = BigInteger.ONE;
 
         for (int i = 0; i <= n.intValue(); i++ ) {
-            if ( i == 0 || i == 1) arr[i] = BigInteger.valueOf(1);
-            else arr[i] = arr[i-2].add(arr[i -1]);
-            result = result.add(arr[i]);
-
+            a = b;
+            b = c;
+            c = a.add(b);
+            result = result.add(a);
         }
 
         return result.multiply(BigInteger.valueOf(4));

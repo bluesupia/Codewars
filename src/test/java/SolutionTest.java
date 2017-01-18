@@ -27,6 +27,7 @@ public class SolutionTest {
         assertThat(Solution.arrayToTree(arrayFrom(17, 0, -4, 3, 15)), is(expected));
     }
 
+
     private int[] arrayFrom(int... values) {
         return values;
     }
