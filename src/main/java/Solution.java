@@ -1,15 +1,17 @@
 
 /**
  * Created by supersupa on 2016. 12. 16..
+ * 7kyu / Fun with lists: length
  * https://www.codewars.com/kata/fun-with-lists-length/train/java
- * https://www.codewars.com/kata/582041237df353e01d000084/train/java
- * 6kyu
  *
+ * 5kyu / Number of trailing zeros of N!
  * https://www.codewars.com/kata/52f787eb172a8b4ae1000a34/train/java
- * 5kyu
  *
+ * 5kyu / Fun with trees: array to tree
  * https://www.codewars.com/kata/57e5a6a67fbcc9ba900021cd/train/java
- * 5kyu
+ *
+ * 4kyu / Longest Common Subsequence
+ * https://www.codewars.com/kata/52756e5ad454534f220001ef/train/java
  */
 public class Solution {
     public static int zeros(int n) {
@@ -42,5 +44,36 @@ public class Solution {
             return t;
         }
         return null;
+    }
+
+    public static String lcs(String x, String y) {
+        String result1 = _lcs(x, y);
+        String result2 = _lcs(y, x);
+
+        if (result1.length() > result2.length()) {
+            return result1;
+        } else {
+            return result2;
+        }
+    }
+
+    private static String _lcs(String x, String y) {
+        String _x , _y;
+        String[] arr_x = x.split("");
+        String[] arr_y = y.split("");
+        int equal_j = 0;
+        String result = "";
+        for (int i=0; i<arr_x.length; i++) {
+            _x = arr_x[i];
+            for (int j=0; j<arr_y.length; j++) {
+                _y = arr_y[j];
+                if (_x.equals(_y) && (equal_j == 0 || equal_j < j)) {
+                    equal_j = j;
+                    result += _x;
+                    break;
+                }
+            }
+        }
+        return result;
     }
 }
