@@ -47,33 +47,16 @@ public class Solution {
     }
 
     public static String lcs(String x, String y) {
-        String result1 = _lcs(x, y);
-        String result2 = _lcs(y, x);
-
-        if (result1.length() > result2.length()) {
-            return result1;
-        } else {
-            return result2;
-        }
-    }
-
-    private static String _lcs(String x, String y) {
-        String _x , _y;
-        String[] arr_x = x.split("");
-        String[] arr_y = y.split("");
-        int equal_j = 0;
         String result = "";
-        for (int i=0; i<arr_x.length; i++) {
-            _x = arr_x[i];
-            for (int j=0; j<arr_y.length; j++) {
-                _y = arr_y[j];
-                if (_x.equals(_y) && (equal_j == 0 || equal_j < j)) {
-                    equal_j = j;
-                    result += _x;
-                    break;
-                }
+
+        for (int i = 0; i < y.length(); i++) {
+            System.out.println(i);
+            if (x.contains("" + y.charAt(i))) {
+                result += y.charAt(i);
+                x = x.substring(x.indexOf(y.charAt(i)) + 1);
             }
         }
+
         return result;
     }
 }
