@@ -1,5 +1,6 @@
 import org.junit.Test;
 import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 public class SolutionTest {
@@ -30,5 +31,14 @@ public class SolutionTest {
 
     private int[] arrayFrom(int... values) {
         return values;
+    }
+
+    @Test
+    public void exampleTests() {
+//        assertEquals("", Solution.lcs("a", "b"));
+//        assertEquals("abc", Solution.lcs("abcdef", "abc"));
+//        assertEquals("acf", Solution.lcs("abcdef", "acf"));
+//        assertEquals("12356", Solution.lcs("132535365", "123456789"));
+        assertEquals("nottest", Solution.lcs("anothertest", "notatest"));
     }
 }
