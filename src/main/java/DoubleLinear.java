@@ -10,16 +10,15 @@ import java.util.TreeSet;
  */
 public class DoubleLinear {
     public static int dblLinear(int n) {
-
         SortedSet<Integer> result = new TreeSet<Integer>();
         result.add(1);
         int j = 0;
         for (int i = 0;  i < n; i++) {
-            j = (Integer)result.toArray()[i];
+            j = result.first();
             result.add( 2 * j + 1 );
             result.add( 3 * j + 1 );
+            result.remove(j);
         }
-
-        return (Integer)result.toArray()[n];
+        return result.first();
     }
 }
