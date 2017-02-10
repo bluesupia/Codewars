@@ -10,13 +10,7 @@ import java.util.regex.Pattern;
  */
 public class DeltaBits {
     public static int convertBits(int a, int b) {
-        Pattern p = Pattern.compile("(1)");
-        Matcher m = p.matcher(Integer.toBinaryString(a ^ b));
-        int cnt = 0;
-        while(m.find()) {
-            cnt++;
-        }
-        return cnt;
+        return Integer.bitCount(a ^ b);
     }
 }
 
