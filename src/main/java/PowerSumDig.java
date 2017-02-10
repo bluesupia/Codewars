@@ -5,6 +5,9 @@ import java.util.List;
 
 /**
  * Created by supersupa on 2017. 2. 10..
+ *
+ * 5kyu / Numbers that are a power of their sum of digits
+ * https://www.codewars.com/kata/numbers-that-are-a-power-of-their-sum-of-digits/train/java
  */
 public class PowerSumDig {
     public static long powerSumDigTerm(int n) {
