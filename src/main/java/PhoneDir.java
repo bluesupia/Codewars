@@ -16,41 +16,38 @@ public class PhoneDir {
         String regExpForName = "\\<([a-z 'A-z])+\\>";
         String regExpForSpecial = ":|;|\\\\|/|\\$|\\*|!|,|\\?";
 
-        String result = Arrays.stream
+        String[] arr = Arrays.stream
                 (strng.split("\n"))
                 .filter(str -> str.indexOf("+"+num) > -1)
-                .collect(Collectors.joining("\n"));
+                .collect(Collectors.joining("\n"))
+                .split("\n");
 
-        String[] arr = result.split("\n");
         String _phone = "", _name = "", _addr = "";
 
-        if (result.length() == 0) {
-            return String.format("Error => Not found: %s", num);
-        } else if (arr.length > 1) {
-            return String.format("Error => Too many people: %s", num);
-        } else {
-            Pattern p = Pattern.compile(regExpForPhone);
-            Matcher m = p.matcher(arr[0]);
-            while(m.find()) {
-                _phone = m.group().replaceAll("\\+", "");
-            }
+        if (arr.length == 1 && arr[0].length() == 0) return String.format("Error => Not found: %s", num);
+        if (arr.length > 1) return String.format("Error => Too many people: %s", num);
 
-            p = Pattern.compile(regExpForName);
-            m = p.matcher(arr[0]);
-            while(m.find()) {
-                _name = m.group().replaceAll("<|>", "");
-            }
-            _addr = arr[0]
-                    .replaceAll(regExpForPhone,"")
-                    .replaceAll(regExpForName, "")
-                    .replaceAll(regExpForSpecial, "")
-                    .replaceAll("_", " ")
-                    .replaceAll("\\s\\s", " ")
-                    .trim();
-
-            return String.format(
-                    "Phone => %s, Name => %s, Address => %s", _phone, _name, _addr
-            );
+        Pattern p = Pattern.compile(regExpForPhone);
+        Matcher m = p.matcher(arr[0]);
+        while(m.find()) {
+            _phone = m.group().replaceAll("\\+", "");
         }
+
+        p = Pattern.compile(regExpForName);
+        m = p.matcher(arr[0]);
+        while(m.find()) {
+            _name = m.group().replaceAll("<|>", "");
+        }
+        _addr = arr[0]
+                .replaceAll(regExpForPhone,"")
+                .replaceAll(regExpForName, "")
+                .replaceAll(regExpForSpecial, "")
+                .replaceAll("_", " ")
+                .replaceAll("\\s\\s", " ")
+                .trim();
+
+        return String.format(
+                "Phone => %s, Name => %s, Address => %s", _phone, _name, _addr
+        );
     }
 }
