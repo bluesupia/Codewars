@@ -9,25 +9,16 @@ import java.util.List;
  */
 public class Josephus {
     public static <T> List<T> josephusPermutation(final List<T> items, final int k) {
-
         List<T> result = new ArrayList<>();
-        List<T> rest = new ArrayList<>();
-        int i = 0;
-        int max = items.size();
 
-        while(rest.size() > 0) {
-
-            if (i % 3 == 2) {
-                result.add(items.get(i));
-            } else {
-                rest.add(items.get(i));
+        int index = 0;
+        while(!items.isEmpty()) {
+            index += k - 1;
+            if (index >= items.size()) {
+                index %= items.size();
             }
 
-            if (i == max) {
-                rest = new ArrayList<>();
-                i = 0;
-            }
-            i++;
+            result.add(items.remove(index));
         }
         return result;
     }
