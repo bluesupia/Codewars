@@ -33,6 +33,11 @@ public class JosephusTest {
         josephusTest(new Object[]{}, 3, new Object[]{});
     }
 
+    @Test
+    public void test6() {
+        josephusTest(new Object[]{1, 2, 3, 4, 5, 6, 7}, 3, new Object[]{3, 6, 2, 7, 5, 1, 4});
+    }
+
     private void josephusTest(final Object[] items, final int k, final Object[] result) {
         assertThat(Josephus.josephusPermutation(new ArrayList(Arrays.asList(items)), k), is(Arrays.asList(result)));
     }

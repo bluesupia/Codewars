@@ -1,3 +1,7 @@
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 /**
  * Created by supersupa on 2016. 12. 22..
  * Josephus Survivor
@@ -6,6 +10,20 @@
  */
 public class JosephusSurvivor {
     public static int josephusSurvivor(final int n, final int k) {
-        return 0;
+        List<Integer> josephusList = IntStream
+            .range(1, n + 1)
+            .boxed()
+            .collect(Collectors.toList());
+
+        int lastNum = 0;
+        int index = 0;
+        while(!josephusList.isEmpty()) {
+            index += k - 1;
+            index %= josephusList.size();
+            lastNum = josephusList.get(index);
+            josephusList.remove(index);
+        }
+
+        return lastNum;
     }
 }
