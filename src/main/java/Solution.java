@@ -1,3 +1,8 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collector;
 
 /**
  * Created by supersupa on 2016. 12. 16..
@@ -12,6 +17,12 @@
  *
  * 4kyu / Longest Common Subsequence
  * https://www.codewars.com/kata/52756e5ad454534f220001ef/train/java
+ *
+ * 4kyu / Simple Fun #27: Rectangle Rotation (X)
+ * https://www.codewars.com/kata/5886e082a836a691340000c3/train/java
+ *
+ * 4kyu / Range Extraction
+ * https://www.codewars.com/kata/range-extraction/train/java
  */
 public class Solution {
     public static int zeros(int n) {
@@ -58,5 +69,55 @@ public class Solution {
         }
 
         return result;
+    }
+
+    static int rectangleRotation(final int a, final int b) {
+
+
+        return 0;
+    }
+
+
+    public static String rangeExtraction(int[] arr) {
+        List<Integer> list = new ArrayList<Integer>();
+        Collections.addAll(list, Arrays.stream(arr).boxed().toArray(Integer[]::new));
+        String result = list.stream().collect(
+                Collector.of(
+                        () -> new SupplierFormat(),          // supplier : 그릇
+                        (a, t) -> {                 // accumulator
+                            a.before = a.now;
+                            a.now = t;
+                            if ( a.now - a.before == 1) {
+                                if (a.count == 0) {
+                                    a.start = a.now;
+                                }
+                                a.count ++;
+                            } else {
+                                a.result = getResult(a.now, a.start, a.count, a.result);
+                                a.count = 0;
+                                a.result += "," + String.valueOf(a.now) ;
+                            }
+                        },
+                        (a, b) -> null,             // combiner
+                        a ->  getResult(a.now, a.start, a.count, a.result)  // finisher
+                )
+        );
+        return result.substring(1);
+    }
+
+    public static String getResult(int now, int start, int count, String result) {
+        if (count > 1) {
+            result += "-" + String.valueOf(start + count - 1);
+        } else if (count == 1) {
+            result += "," + String.valueOf(start + count - 1);
+        }
+        return result;
+    }
+    public static class SupplierFormat {
+        int now = 0;
+        int before = 0;
+        int count = 0;
+        int start = 0;
+        String result = "";
     }
 }
