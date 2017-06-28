@@ -25,4 +25,8 @@ public class DRoot {
         } while(n / 10 >= 1);
         return n;
     }
+
+    public static int digital_root_best(int n) {
+        return (n != 0 && n%9 == 0) ? 9 : n % 9;
+    }
 }
