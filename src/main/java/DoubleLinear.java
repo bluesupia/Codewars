@@ -5,7 +5,7 @@ import java.util.TreeSet;
  * Created by supersupa on 2017. 2. 8..
  *
  * 4kyu / Twice linear
- * https://www.codewars.com/kata/5672682212c8ecf83e000050/train/java
+ * https://www.codewars.com/kata/5672682212c8ecf83e000050/train/java (X)
  *
  */
 public class DoubleLinear {
